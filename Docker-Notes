@@ -1,0 +1,11 @@
+Storage Driver: Temporary internal storage of container's writeable layer
+Docker supports variaty of storage driver: 
+  - > Overlay2 : File-based storage. (Ubuntu and CentOS +8) (Reeding for disk)
+  - > DeviceMapper: Block storage, more efficent for doing lots of writes.
+ 
+ There are two ways to override storage driver : 
+ 1-) Set the storage-driver value in "/etc/daemon/daemon.json" 
+ 2-)Set the --storage-driver flag when starting docker (in your system unit file)
+ 
+First method is recommended.
+- > "/etc/daemon/daemon.json" It is daemon config file.
