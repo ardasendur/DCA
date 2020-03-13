@@ -5,7 +5,7 @@ Docker supports variaty of storage driver:
  
  There are two ways to override storage driver : 
  1-) Set the storage-driver value in "/etc/daemon/daemon.json" 
- 2-)Set the --storage-driver flag when starting docker (in your system unit file)
+ 2-) Set the --storage-driver flag when starting docker (in your system unit file)
  
 First method is recommended.
 - > "/etc/daemon/daemon.json" It is daemon config file.
@@ -32,4 +32,59 @@ To upgrade and downgrade docker :
 sudo apt-get install -y docker-ce = ...
 sudo apt-get remove -y docker-ce = ...
 
-
+Docker Images: 
+ Containers and images use a layered file system. Each layer contains only the differeces from the previous layer.
+ 
+Layered File System 
+   -> Smaller overall storage footprint.
+   -> Faster image trasfer.
+   -> Faster image build.
+ 
+ Download the image from remote registry : docker image pull IMAGE[:TAG]
+ List the layer on build image : docker image history IMAGE
+ 
+ Docker File :
+  Helps you to create your own image.
+  EXPOSE : documents which port are intended to published.(not published the port just documentation)
+  WORKDIR : set the current working directory  for  add,copy ,cmd,entrypoint
+    Multiple workdir is also possible.
+    It is important workidr can be relative and absoulute like that: 
+      WORKDIR /var
+      WORKDIR www
+      WORKDIR html
+  COPY : copy the local  file to the image 
+  STOPSIGNAL: Specify the signal that will be used to stop the container
+    STOPSIGNAL SIGTERM 
+  HEALTCHECK: Specifiy a command to rum in order to perform a custom healt check. It helps you to verify container work properly.
+    HEALTCHECK CMD curl localhost:80
+  
+  Efficient Docker Images:
+     -> Put the thing that are less likely to change on lower-level layers.
+     -> Don't create unnecassary layer
+    Multi- Stage Builds:
+      - > Docker support the ability to perform multi-stage builds. Multi stage builds have more than one "FROM" directives.
+      
+  Managing Images: 
+    -> docker image pull 
+    -> docker image inspect NAME - > Get detailed information about image
+    -> docker rmi NAME
+    -> docker image rm NAME
+    -> docker image inspect IMAGE --format  -> To get only subset of the information.
+        EX : docker image inspect nginx --format "{{.Architecture}}"
+        EX : docker image inspect nginx --format "{{.Os}}"
+    -> Whenever images are used in container you can delete images by using -f option.
+    -> docker image prune (Delete unused images from the system)
+  
+  Flatteninig Docker Image to Single Layer :
+  Images composed of multi layer , if you want to make image one layer following steps can be implemented.
+   - > Run a container from image
+        docker run -d IMAGE
+   - > Export the container to an archive using "docker export"
+         docker export flat_image | flat_tar
+   - > Import the archive as a new image using "docker import" 
+         cat flat_tar | docker import - flat:latest
+  The result image will have only one layer!
+    docker export
+    docker import 
+ 
+ 
