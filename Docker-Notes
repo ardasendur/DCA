@@ -9,3 +9,27 @@ Docker supports variaty of storage driver:
  
 First method is recommended.
 - > "/etc/daemon/daemon.json" It is daemon config file.
+
+Docker run - detached mode -d 
+docker run --restart (Specify when the container shoduld be automatically restarted.)
+
+restart options: no (default), on-failure, always,unless-stopped
+  - NO : Never restart the container
+  - On-failure: Only the if container fails.
+  - always: Always restart the container whether it succeeds or fails.
+  - Unless-stooped: Unless the container was manually stooped ,always restart the container
+  
+-p <host-port>:<container-port>  
+-rm  - Automatically remove the container when it exist Cannot be used for restart.
+--memory : Hard limit on memory (not use more than defined value)
+--memory-reservation : A soft limit
+Container commands: 
+  docker container stop 
+  docker container start
+  docker container rm 
+
+To upgrade and downgrade docker :
+sudo apt-get install -y docker-ce = ...
+sudo apt-get remove -y docker-ce = ...
+
+
