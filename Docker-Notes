@@ -1,5 +1,5 @@
 Storage Driver: Temporary internal storage of container's writeable layer
-Docker supports variaty of storage driver: 
+Docker supports variety of storage driver: 
   - > Overlay2 : File-based storage. (Ubuntu and CentOS +8) (Reeding for disk)
   - > DeviceMapper: Block storage, more efficent for doing lots of writes.
  
