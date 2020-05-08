@@ -86,5 +86,9 @@ Layered File System
   The result image will have only one layer!
     docker export
     docker import 
+ Multi-Stage Builds
+ - Docker support multi-stage builds. It contains more than one "FROM" directive starting new stage file system layers.
+ - You can also name your stages with FROM...AS, then reference the name with COPY --from 
+ 
  
  
