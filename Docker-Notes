@@ -93,4 +93,6 @@ Layered File System
  docker inspect --format '{{ .NetworkSettings.IPAddress }}' container_name_or_id  
 
  - To display layer of images by using docker history <Image_ID>
+ - To see the file size of your containers, you can use the --size argument of docker ps
+        docker ps --size or docker ps -a --size
  
