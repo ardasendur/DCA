@@ -1,1 +1,23 @@
 
+Docker Swarm
+-> Initialize cluster with swarm  docker swarm init --advertise-addr <Private_Ip> 
+   you can see the number of managers  and node from docker info part
+ -> you can list the current nodes in the swarm docker node ls (manager does count as a node )
+ -> To generate token for join as a worker:
+       docker swarm join-token worker 
+       docker swarm join --token <TOKEN>
+ - > According to the docker swarm architecture manager can speak with other manager and worker.
+ - > Worker cannot speak with each other.
+ - > Manager node use RAFT algorithm to make a concensus. This algorithm provides cluster work healthy.
+ 
+ Docker Swarm Restore and Backup : 
+      -> In a prodcution environement , it's always a good idea to back up critical data
+        Steps for backup : 
+            -> Stop the docker service (sudo systemctl stop docker)
+            -> Back up all data in the directory /var/lib/docker/swarm (sudo tar -zvcf backup.tar.gz -C /var/lib/docker/swarm .)
+            -> Start docker service (sudo systemctl start docker)
+       Steps for restore : 
+             -> Stop the docker service (sudo systemctl start docker)
+             -> Delete the existing docker swarm file (rm -rf /var/lib/docker/swarm/*)
+             -> Copy files (sudo tar -zxvf backup.tar.gz -C /var/lib/docker/swarm/) 
+             -> Start the docker (sudo systemctl start docker)
