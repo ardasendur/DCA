@@ -48,7 +48,29 @@ Docker Swarm
         -> To rotate your key
           docker swarm unlock-key --rotate
           
-            
-    
+     Docker service create : 
+     docker service create --name -p --env --mount --replicas
+     docker service ls
+     docker service ps <Service>
+     docker service inspect <Service>
+     docker service update --replicas <Service>
+     docker service rm <Service>
+     
+     Replicated and Global Service :
+      -> Replicated services are using requested number of replicas for cluester.
+        docker service create --name test --replicas 3 nginx
+      ->Global services run one task in one node in cluster
+        docker service create --mode global nginx
+        
+     Scaling Service : 
+      docker service update --replicas 3 nginx
+      docker service scale nginx=4
+      Two different ways to scale a service:
+      docker service update --replicas 3 nginx
+      docker service scale nginx=4
+      
+      Delete a service:
+      docker service rm nginx
+        
    
    
