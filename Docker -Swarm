@@ -21,3 +21,16 @@ Docker Swarm
              -> Delete the existing docker swarm file (rm -rf /var/lib/docker/swarm/*)
              -> Copy files (sudo tar -zxvf backup.tar.gz -C /var/lib/docker/swarm/) 
              -> Start the docker (sudo systemctl start docker)
+             
+             
+   Namespace and CGroups:
+   -> cgroups and namespace are capabilities of kernel. Shortly, cgroups limit how much resources you can use.
+    cgroups are metering and limiting ; memory, cpu ,network,block I/O
+    cgroups can be called as resoruce management.It decides how much resources can allocate for container
+   -> Namespace provides process isolation complete isolation of containers, separate file system
+   -> Namespacing is  limiting whatever container see.
+    chroot and unshare systemcall can be used.
+            
+    
+   
+   
