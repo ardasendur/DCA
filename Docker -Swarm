@@ -30,6 +30,24 @@ Docker Swarm
    -> Namespace provides process isolation complete isolation of containers, separate file system
    -> Namespacing is  limiting whatever container see.
     chroot and unshare systemcall can be used.
+   
+   Docker swarm autolock
+    -> It provides encyrpted communication between  nodes
+    -> RAFT logs for swarm manager
+    -> TLS communication between nodes. 
+    docker swarm init --autolock
+    docker swarm update --autolock=false
+    docker swarm update --autolock=true
+         -> after restart your cluster , you should keep your unlock key otherwise , you cannot connect cluster.
+    docker swarm unlock
+    Working with autolock
+        -> Whenever docker restarts on manager , you must unlock docker swarm
+          docker swarm unlock
+        -> To get unlock key for docker swarm
+          docker swarm unlock-key
+        -> To rotate your key
+          docker swarm unlock-key --rotate
+          
             
     
    
