@@ -71,6 +71,9 @@ Docker Swarm
       
       Delete a service:
       docker service rm nginx
+      
+      docker service inspect --format='{{.ID}}' nginx-svc
+
         
    
    
