@@ -124,6 +124,10 @@ Layered File System
   journalctl -u docker
   Show disk information: 
   docker system df
+  
+  There are two forms for the RUN instruction inside dockerfile:
+   shell from : RUN <command>
+   exec form: RUN ["executable", "param1","param2"] 
  Differences between "ARG" and "ENV" docker file :
   
  
