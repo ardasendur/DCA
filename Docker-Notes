@@ -128,6 +128,10 @@ Layered File System
   There are two forms for the RUN instruction inside dockerfile:
    shell from : RUN <command>
    exec form: RUN ["executable", "param1","param2"] 
+   
+  To build image with no-cache opition:
+     docker buiild --no-cache .
+ 
  Differences between "ARG" and "ENV" docker file :
   
  
