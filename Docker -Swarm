@@ -1,6 +1,9 @@
 
 Docker Swarm
 -> Initialize cluster with swarm  docker swarm init --advertise-addr <Private_Ip> 
+   NOTE: addvertise addr -> this flag configures the IP adress for the manager node and the other nodes in the swarm must be able to
+   access the manager IP address.
+   
    you can see the number of managers  and node from docker info part
  -> you can list the current nodes in the swarm docker node ls (manager does count as a node )
  -> To generate token for join as a worker:
@@ -43,7 +46,7 @@ Docker Swarm
     Working with autolock
         -> Whenever docker restarts on manager , you must unlock docker swarm
           docker swarm unlock
-        -> To get unlock key for docker swarm
+        -> To get unlock key for docker swarm, to view unlock key
           docker swarm unlock-key
         -> To rotate your key
           docker swarm unlock-key --rotate
@@ -55,7 +58,8 @@ Docker Swarm
      docker service inspect <Service>
      docker service update --replicas <Service>
      docker service rm <Service>
-     
+     To see the task of docker swarm service :
+     docker service ps <Service_Name>
      Replicated and Global Service :
       -> Replicated services are using requested number of replicas for cluester.
         docker service create --name test --replicas 3 nginx
@@ -71,6 +75,9 @@ Docker Swarm
       
       Delete a service:
       docker service rm nginx
+      
+      How to revert changes form service:
+      docker service rollback my-service
       
       docker service inspect --format='{{.ID}}' nginx-svc
 
