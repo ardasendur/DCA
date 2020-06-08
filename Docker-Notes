@@ -2,6 +2,12 @@ Storage Driver: Temporary internal storage of container's writeable layer
 Docker supports variety of storage driver: 
   - > Overlay2 : File-based storage. (Ubuntu and CentOS +8) (Reeding for disk)
   - > DeviceMapper: Block storage, more efficent for doing lots of writes.
+  -> Device mapper loop-lvm mode for testing , the configuration of loop-lvm appropriate for testing.
+      Stop the docker
+      systemctl stop docker
+      edit /etc/docker/daemon.json
+      sudo systemctl start docker
+  -> Direct-lvm is used for production for devicemapper.
  
  There are two ways to override storage driver : 
  1-) Set the storage-driver value in "/etc/daemon/daemon.json" 
