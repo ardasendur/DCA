@@ -117,7 +117,13 @@ Layered File System
                     && curl -SL http://example.com/big.tar.xz \
                     | tar -xJC /usr/src/things \
                     && make -C /usr/src/things all
-                    
+ 
+ Troubleshoting docker for log . They are primary way to check docker logs 
+  docker logs container_id
+  docker serivce logs service_id
+  journalctl -u docker
+  Show disk information: 
+  docker system df
  Differences between "ARG" and "ENV" docker file :
   
  
