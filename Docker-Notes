@@ -112,8 +112,8 @@ Layered File System
                     | tar -xJC /usr/src/things \
                     && make -C /usr/src/things all
                     
-                    
-Docker Swarm
- - > According to the docker swarm architecture manager can speak with other manager and worker.
- - > Worker cannot speak with each other.
- - > Manager node use RAFT algorithm to make a concensus. This algorithm provides cluster work healthy.
+ Differences between "ARG" and "ENV" docker file :
+  
+ 
+ 
+ 
