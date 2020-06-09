@@ -25,6 +25,8 @@ Docker Swarm
              -> Copy files (sudo tar -zxvf backup.tar.gz -C /var/lib/docker/swarm/) 
              -> Start the docker (sudo systemctl start docker)
              
+  
+             
              
    Namespace and CGroups:
    -> cgroups and namespace are capabilities of kernel. Shortly, cgroups limit how much resources you can use.
@@ -92,7 +94,20 @@ Docker Swarm
      docker stack ps STACK ->list task associated with a stack
      docker stack rm  -> remove stack
      
-
-        
-   
+     Node Labels
+         -> you can add pieces of metadata to your swarm nodes using labels.
+         -> It is important for high availability.
+         -> You can add label for nodes :
+               docker node update --label-add availability_zone=east <NODE_NAME>
+               docker node update --label-add availability_zone=west <NODE_NAME>
+         -> To view existing label
+               docker node inspect --pretty <NODE_NAME>
+         -> "--constaint" when you create a service to restirct which nodes will be used to execute task
+               docker service create --name nginx-east --constraint node.labels.availability_zone==east --replicas 3 nginx
+               docker service ps nginx-east
+               docker service create --name nginx-west --constraint node.labels.availability_zone!=east --replicas 3 nginx
+               docker service ps nginx-west
+         -> "--placement-pref" to spread tasks evenly based on value of specific label
+                docker service create --name nginx-spread --placement-pref spread=node.labels.availability_zone --replicas 3 nginx
+                docker service ps nginx-spread
    
