@@ -80,6 +80,18 @@ Docker Swarm
       docker service rollback my-service
       
       docker service inspect --format='{{.ID}}' nginx-svc
+      To get service logs
+      docker service logs service_name
+      
+     Docker Stack : A stack is a collection o interrelated services that can be deployeed and scaled as  a unit.
+     docker stacks are similir to the multicontainer applications created using docker compose.
+     docker stack command:
+     docker stack deploy -c <Compose file>
+     docker stack ls  -> list current stacks
+     docker stack services stack -> list associated services in stack
+     docker stack ps STACK ->list task associated with a stack
+     docker stack rm  -> remove stack
+     
 
         
    
