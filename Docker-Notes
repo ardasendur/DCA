@@ -130,7 +130,7 @@ Layered File System
    exec form: RUN ["executable", "param1","param2"] 
    
   To build image with no-cache opition:
-     docker buiild --no-cache .
+     docker build --no-cache .
  
  Configuring Docker to Use External DNS :
   To customize external DNS is used by your container 
@@ -141,12 +141,6 @@ Layered File System
  sudo systemctl restart docker
  Also , you can run a container as custom DNS
  docker run --dns 8.8.4.4 nicolaka/netshoot nslookup google.com
- 
- 
- 
- 
+
  Differences between "ARG" and "ENV" docker file :
   
- 
- 
- 
