@@ -1,0 +1,11 @@
+1- Using one run command to apply all dependicies 
+  RUN ap-get update && apt-get install -y \
+                        curl \
+                         aufs-tools
+ 
+2- Reduce image size by using remove unnecassay dependicies
+   RUN apt-get update && apt-get install -y --no-install-recommends
+
+3- Use official Docker image
+4- Use specific tag, Avoid the using latest tag for image.
+5- Use multi staged builds remove build dependicies
