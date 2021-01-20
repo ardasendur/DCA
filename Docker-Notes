@@ -143,4 +143,14 @@ Layered File System
  docker run --dns 8.8.4.4 nicolaka/netshoot nslookup google.com
 
  Differences between "ARG" and "ENV" docker file :
+ 
+ Docker offers two type of mount options:
+  1-)bind mounting 
+     docker run -v /etc/dir:/tmp
+  2-)volume mounting 
+     docker run -v test:/tmp
+     normmaly /var/lib/docker and you can see volumes options it generates test inside volumes 
+ 
+ Now usage:
+ docker run --mount type=bind, source/...., target ....
   
